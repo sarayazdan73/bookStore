@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
     public class PageController {
 
         @RequestMapping(method = RequestMethod.GET,value = "book")
-        public String getbookPage() {
+        public String getbookData() {
             return "book";
         }
         @RequestMapping(method = RequestMethod.GET,value = "library")
