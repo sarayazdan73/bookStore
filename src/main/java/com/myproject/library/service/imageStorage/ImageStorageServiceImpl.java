@@ -16,7 +16,6 @@ public class ImageStorageServiceImpl implements ImageStorageService {
     @Override
     public String downloadFile(long id) {
         ImageStorage imageStorage = imageStorageRepository.getOne(id);
-        String pathFile=imageStorage.getFileDir()+"/"+imageStorage.getFileName();
-        return pathFile;
+        return imageStorage.getFileDir()+"/"+imageStorage.getFileName();
     }
 }
