@@ -2,11 +2,12 @@ body {
     background-color: #0a68bb;
     background-image: url('https://cutewallpaper.org/21/library-background-images/Download-wallpaper-2560x1080-library-books-reading-.jpg');
     background-size : cover;
+
 }
 
 nav {
     margin : 50px auto;
-    width  : 690px;
+    width  : 60%;
 }
 
 menu {
