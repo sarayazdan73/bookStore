@@ -1,17 +1,19 @@
 body {
-    background-color: #0a68bb;
-    background-image: url('https://cutewallpaper.org/21/library-background-images/Download-wallpaper-2560x1080-library-books-reading-.jpg');
-    background-size : cover;
+    background-color: #e0f0ff;
+    background-image: url('http://localhost:8081/img/background.jpg');
+    background-size :100%;
+
 
 }
+
 
 nav {
     margin : 50px auto;
-    width  : 60%;
+
 }
 
 menu {
-    border-radius : 3px;
+    border-radius : 5px;
 }
 
 menu:after , menu:before {
@@ -25,7 +27,7 @@ menu:after {
 
 li {
     list-style-type : none;
-    background      : linear-gradient(rgba(220,220,255,0.4) 85%, rgba(255,255,255,0.5) 100%);
+    background      : linear-gradient(rgba(128, 128, 128,0.6) 85%, rgba(255, 230, 230,0.5) 100%);
     float   : left;
     cursor  : pointer;
     padding : 3px 10px;
@@ -54,8 +56,9 @@ a {
 }
 
 li:hover a {
+    list-style-type : none;
     top   : -20px;
-    color : #4eacff;
+    color : #444545;
     background-color: #fff;
     box-shadow : 0 0 5px 0 rgba(255, 255, 255, 0.7);
     transition : all .4s;
@@ -81,7 +84,10 @@ li:hover a:after {
 /*************************************/
 
 .menu2 {
-    width : 350px;
+    width : 70%;
+    margin-top: 50px;
+    margin-left: 370px;
+    margin-right: auto;
 }
 
 .menu2 a {
@@ -109,6 +115,4 @@ li:hover a:after {
     transition   : all .4s;
 }
 
-a.fun {
-    display : none;
-}
+

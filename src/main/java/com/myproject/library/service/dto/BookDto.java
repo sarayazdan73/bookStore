@@ -8,11 +8,11 @@ public class BookDto {
     int price;
     int count;
     String nameWriter;
-    long library;
+    String library;
     MultipartFile imageStorage;
 
 
-    public BookDto(String name, int price, int count, long library, MultipartFile imageStorage, String nameWriter) {
+    public BookDto(String name, int price, int count, String library, MultipartFile imageStorage, String nameWriter) {
         this.name = name;
         this.price = price;
         this.count = count;
@@ -45,11 +45,11 @@ public class BookDto {
         this.count = count;
     }
 
-    public long getLibrary() {
+    public String getLibrary() {
         return library;
     }
 
-    public void setLibrary(long library) {
+    public void setLibrary(String library) {
         this.library = library;
     }
 

@@ -4,6 +4,7 @@
 
 <head>
     <title>home</title>
+    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/bootstrap.min.css">
@@ -18,11 +19,13 @@
         <li><a href="http://localhost:8081/home">home</a></li>
         <li><a href="http://localhost:8081/data/library">library</a></li>
         <li><a href="http://localhost:8081/data/book">book</a></li>
+        <sec:authorize access="hasRole('ADMIN')">
+            <li><a href="http://localhost:8081/data/user">user</a></li>
+        </sec:authorize>
         <li><a href="http://localhost:8081/logout">logout</a></li>
     </menu>
 </nav>
 
-<a class="fun" href="http://info.flagcounter.com/YXv0"><img src="http://s03.flagcounter.com/count/YXv0/bg_FFFFFF/txt_000000/border_CCCCCC/columns_8/maxflags_250/viewers_0/labels_1/pageviews_1/flags_1/" alt="Flag Counter" border="0"></a>
 
 </body>
 </html>

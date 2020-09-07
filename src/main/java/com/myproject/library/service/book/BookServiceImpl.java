@@ -7,8 +7,10 @@ import com.myproject.library.model.Library;
 import com.myproject.library.model.User;
 import com.myproject.library.repository.BookRepository;
 import com.myproject.library.repository.ImageStorageRepository;
+import com.myproject.library.repository.LibraryRepository;
 import com.myproject.library.repository.UserRepository;
 import com.myproject.library.service.dto.BookDto;
+import com.myproject.library.service.library.LibraryService;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,6 +31,9 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private LibraryRepository libraryRepository;
 
     @Autowired
     private ImageStorageRepository imageStorageRepository;
@@ -63,13 +68,10 @@ public class BookServiceImpl implements BookService {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username;
         if (principal instanceof UserDetails) {
-
             username = ((UserDetails)principal).getUsername();
-
         } else {
 
             username = principal.toString();
-
         }
         User user = userRepository.findUserByUserName(username);
         imageStorage.setUser(user);
@@ -80,14 +82,12 @@ public class BookServiceImpl implements BookService {
         book1.setNameWriter(book.getNameWriter());
         book1.setPrice(book.getPrice());
         Library library=new Library();
-        library.setId(book.getLibrary());
+        Library library1 = libraryRepository.findLibraryByName(book.getLibrary());
+        library.setId(library1.getId());
         book1.setLibrary(library);
-
         book1.setImageStorage(imageS);
-
         bookRepository.save(book1);
 
     }
-
 }
 

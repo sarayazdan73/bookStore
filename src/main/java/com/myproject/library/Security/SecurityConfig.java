@@ -41,9 +41,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 
         http
                 .authorizeRequests()
-               .antMatchers(HttpMethod.GET, "/home").permitAll()
-//                        .antMatchers(HttpMethod.GET, "/data/**").hasRole("USER")
-//                        .antMatchers(HttpMethod.GET, "/rest/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/home").permitAll()
+//              .antMatchers(HttpMethod.GET, "/data/**").hasRole("USER")
+//              .antMatchers(HttpMethod.GET, "/rest/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/data/user").hasRole("ADMIN")
                 .anyRequest().permitAll().and()
                 .csrf().disable()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/home",true)
@@ -55,6 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
                 .httpBasic();
 
     }
+
 
     @Bean
     public SecurityEvaluationContextExtension securityEvaluationContextExtension() {

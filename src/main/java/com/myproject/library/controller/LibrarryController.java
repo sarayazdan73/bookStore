@@ -25,8 +25,8 @@ public class LibrarryController {
         return  new GsonBuilder().create().toJson(libraries);
     }
     @PostMapping(path="addlibrary")
-    public String addlibrariy(@ModelAttribute Library libraryName){
-        Library li=libraryService.addLibrary(libraryName);
+    public String addlibrariy(@ModelAttribute Library library){
+        Library li=libraryService.addLibrary(library);
         return new GsonBuilder().create().toJson(li);
     }
     @DeleteMapping("/libraries/{id}")

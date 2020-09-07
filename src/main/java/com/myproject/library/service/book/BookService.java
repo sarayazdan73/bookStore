@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface BookService {
     List<Book> getAllBooks();
-
     void deleteBook(long id);
     void uploadbookdata(BookDto book) throws IOException;
 

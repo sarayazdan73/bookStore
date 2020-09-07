@@ -37,6 +37,7 @@ public class BookController {
         this.bookService.deleteBook(id);
         return HttpStatus.OK;
     }
+
     @PostMapping(path ="/addbookimage")
     public String addbookimage(BookDto book){
         try {

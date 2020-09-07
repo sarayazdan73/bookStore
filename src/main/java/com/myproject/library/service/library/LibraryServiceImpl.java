@@ -23,8 +23,14 @@ public class LibraryServiceImpl implements LibraryService {
         return libraries;
     }
 
-    public Library addLibrary(Library libraryName){
-        Library li = libraryRepository.save(libraryName);
+    @Override
+    public Library getLibrarybyname(String nameName) {
+        Library libraries=libraryRepository.findLibraryByName(nameName);
+        return libraries;
+    }
+
+    public Library addLibrary(Library library){
+        Library li = libraryRepository.save(library);
         return li;
     }
 
