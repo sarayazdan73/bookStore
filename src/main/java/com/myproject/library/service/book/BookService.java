@@ -11,5 +11,6 @@ public interface BookService {
     List<Book> getAllBooks();
     void deleteBook(long id);
     void uploadbookdata(BookDto book) throws IOException;
+    List<Book> getsbook(String x);
 
 }

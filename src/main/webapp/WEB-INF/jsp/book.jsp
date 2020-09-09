@@ -9,11 +9,20 @@
     <link rel="stylesheet" href="/bootstrap.min.css">
     <link rel="stylesheet" href="/sara.css">
     <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="/jquery.min.js"></script>
     <script src="/bootstrap.min.js"></script>
 
 </head>
 <body  id="tbody">
+
+    <input  type="text" id="partName" style="width: 95%" class="form-control" placeholder="Search...">
+        <button onclick="myFunction4()" class="btn btn-secondary">
+            <i class="fa fa-search"></i>
+        </button>
+
+
+
 <nav class="menu2">
     <menu>
         <li><a href="http://localhost:8081/home">home</a></li>
@@ -23,10 +32,11 @@
         <li><a href="http://localhost:8081/data/user">user</a></li>
         </sec:authorize>
         <li><a href="http://localhost:8081/logout">logout</a></li>
+        <li><a onclick="myFunction()">show all books</a></li>
     </menu>
 </nav>
 
-<button class="btn" id="btn1" onclick="myFunction()" >show all books</button>
+
 
 <table id="book" >
     <thead>
@@ -193,6 +203,73 @@
         if (event.target == modal) {
             modal.style.display = "none";
         }
+    }
+    function myFunction4() {
+        var x = document.getElementById("partName").value;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var response = xhttp.response;
+                var books = JSON.parse(response);
+                tablebook.innerHTML = "";
+                var i;
+                for (i = 0; i < books.length; i++) {
+                let id = books[i].id;
+                let name = books[i].name;
+                let price = books[i].price;
+                let count = books[i].count;
+                let image = books[i].imageStorage.id;
+                let nameWriter = books[i].nameWriter;
+                let library = books[i].library.name;
+                var newRow = tablebook.insertRow();
+                let a = i;
+                var newCell = newRow.insertCell(0);
+                var newText = document.createTextNode(name);
+                newCell.appendChild(newText);
+                var newCell = newRow.insertCell(1);
+                var newText = document.createTextNode(price);
+                newCell.appendChild(newText);
+                var newCell = newRow.insertCell(2);
+                var newText = document.createTextNode(count);
+                newCell.appendChild(newText);
+                var newCell = newRow.insertCell(3);
+                var newText = document.createElement("IMG");
+                newText.setAttribute("src", "http://localhost:8081/book/img/" + image);
+                newText.setAttribute("width", "80");
+                newText.setAttribute("height", "80");
+                newCell.appendChild(newText);
+                var newCell = newRow.insertCell(4);
+                var newText = document.createTextNode(library);
+                newCell.appendChild(newText);
+                var newCell = newRow.insertCell(5);
+                var newText = document.createTextNode(nameWriter);
+                newCell.appendChild(newText);
+                var newCell = newRow.insertCell(6);
+                var inputElement = document.createElement('input');
+                inputElement.type = "button"
+                inputElement.value = "Edit"
+                inputElement.id = "btnEdit"
+                inputElement.setAttribute("class", "btn1");
+                inputElement.className = "btn1"
+
+                inputElement.addEventListener('click', function () {
+                    myFunction2(id, name, price, count, image, nameWriter, library);
+                });
+                var inputElement2 = document.createElement('input');
+                inputElement2.type = "button"
+                inputElement2.className = "btn1"
+                inputElement2.value = "Delete"
+                inputElement2.addEventListener('click', function () {
+                    myFunction3(id, a);
+                });
+                newCell.appendChild(inputElement);
+                newCell.appendChild(inputElement2);
+            }
+
+            }
+        };
+        xhttp.open("GET", "/book/bookSearch/"+x, true);
+        xhttp.send();
     }
 
 

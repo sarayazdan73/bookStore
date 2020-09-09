@@ -58,7 +58,11 @@ public class BookController {
         InputStream in = new FileInputStream(initialFile);
         return IOUtils.toByteArray(in);
     }
-
+    @GetMapping(path = "bookSearch/{x}")
+    public String getBookx(@PathVariable String x){
+        List<Book> books = bookService.getsbook(x);
+        return  new  GsonBuilder().create().toJson(books);
+    }
 
 
 }

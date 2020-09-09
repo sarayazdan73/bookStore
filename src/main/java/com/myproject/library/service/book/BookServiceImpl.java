@@ -89,5 +89,12 @@ public class BookServiceImpl implements BookService {
         bookRepository.save(book1);
 
     }
+
+    @Override
+    public List<Book> getsbook(String x) {
+        List<Book> books =bookRepository.findByNameContaining(x);
+        return books;
+    }
+
 }
 
