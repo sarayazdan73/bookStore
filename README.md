@@ -42,3 +42,7 @@ Frontend
 ![Form](https://user-images.githubusercontent.com/69106891/93897046-7ef37a80-fcfe-11ea-9052-663a21725acd.jpg)
 ### Users:
 ![User](https://user-images.githubusercontent.com/69106891/93897049-8024a780-fcfe-11ea-853f-7de6eef47414.jpg)
+
+for run my project:
+1.go to project directory
+2.mvn spring-boot:run
