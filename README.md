@@ -13,7 +13,7 @@ Technology Stacks
 
 Backend
 
-    Java 11
+    Java 8
     Spring Boot 
     Spring Security
     Spring Data JPA
@@ -29,16 +29,15 @@ Frontend
     Bootstrap
     jQuery
 
-Preview Project   
+**Preview Project**   
     
- Login Page:
+###  Login Page:
 ![Login](https://user-images.githubusercontent.com/69106891/93897040-7d29b700-fcfe-11ea-9cd1-fe106d645792.jpg)
- Home Page:
+###  Home Page:
 ![Home](https://user-images.githubusercontent.com/69106891/93897024-7ac75d00-fcfe-11ea-914c-978281a5b0d1.jpg)
-Books:
+### Books:
 ![Books](https://user-images.githubusercontent.com/69106891/93897042-7dc24d80-fcfe-11ea-8772-b917abb14037.jpg)
-Add Book Form:
+### Add Book Form:
 ![Form](https://user-images.githubusercontent.com/69106891/93897046-7ef37a80-fcfe-11ea-9052-663a21725acd.jpg)
-Users:
+### Users:
 ![User](https://user-images.githubusercontent.com/69106891/93897049-8024a780-fcfe-11ea-853f-7de6eef47414.jpg)
-
