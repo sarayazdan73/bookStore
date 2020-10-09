@@ -209,8 +209,21 @@ input[type=submit] {
     cursor: pointer;
 
 }
+#btnCart{
+    width: 100px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
 input[type=submit]:hover {
+    background-color: #45a049;
+}
+#btnCart:hover{
     background-color: #45a049;
 }
 

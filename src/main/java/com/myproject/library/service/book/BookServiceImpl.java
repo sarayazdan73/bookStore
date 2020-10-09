@@ -10,7 +10,6 @@ import com.myproject.library.repository.ImageStorageRepository;
 import com.myproject.library.repository.LibraryRepository;
 import com.myproject.library.repository.UserRepository;
 import com.myproject.library.service.dto.BookDto;
-import com.myproject.library.service.library.LibraryService;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -95,6 +94,13 @@ public class BookServiceImpl implements BookService {
         List<Book> books =bookRepository.findByNameContaining(x);
         return books;
     }
+
+    @Override
+    public List<Book> getbookid(List<Long> id) {
+        List<Book> books = bookRepository.findByIdIn(id);
+        return books;
+    }
+
 
 }
 

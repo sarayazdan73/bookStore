@@ -12,10 +12,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("/book")
@@ -48,6 +51,7 @@ public class BookController {
         return "succes";
     }
 
+
     @GetMapping(
             value = "img/{id}",
             produces = MediaType.APPLICATION_OCTET_STREAM_VALUE
@@ -63,6 +67,24 @@ public class BookController {
         List<Book> books = bookService.getsbook(x);
         return  new  GsonBuilder().create().toJson(books);
     }
+
+    @PostMapping(path ="/addcart/{id}")
+    public String addcart(@PathVariable  long id, HttpServletRequest request){
+        List<Long> ids = (List<Long>) request.getSession().getAttribute("id");
+        if (ids == null) {
+            ids = new ArrayList<>();
+            request.getSession().setAttribute("id", ids);
+        }
+        ids.add(id);
+        request.getSession().setAttribute("id", ids);
+        return "succes";
+    }
+    @GetMapping(path = "bookid/{id}")
+    public String getBookx(@PathVariable List<Long> id){
+        List<Book> books = bookService.getbookid(id);
+        return  new  GsonBuilder().create().toJson(books);
+    }
+
 
 
 }
