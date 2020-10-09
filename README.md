@@ -29,12 +29,6 @@ Frontend
     Bootstrap
     jQuery
 
-login page
 
-
-
-Book table
-
-Book Adding Form
 
 
