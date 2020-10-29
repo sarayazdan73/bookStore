@@ -68,23 +68,38 @@ public class BookController {
         return  new  GsonBuilder().create().toJson(books);
     }
 
-    @PostMapping(path ="/addcart/{id}")
-    public String addcart(@PathVariable  long id, HttpServletRequest request){
+    @PostMapping(path ="/addcart/{id}/{number}")
+    public String addcart(@PathVariable  long id,@PathVariable int number, HttpServletRequest request){
         List<Long> ids = (List<Long>) request.getSession().getAttribute("id");
+        List<Integer> numbers = (List<Integer>) request.getSession().getAttribute("number");
         if (ids == null) {
             ids = new ArrayList<>();
+            numbers = new ArrayList<>();
             request.getSession().setAttribute("id", ids);
+            request.getSession().setAttribute("number", numbers);
         }
         ids.add(id);
+        numbers.add(number);
         request.getSession().setAttribute("id", ids);
+        request.getSession().setAttribute("number", numbers);
         return "succes";
     }
+
     @GetMapping(path = "bookid/{id}")
     public String getBookx(@PathVariable List<Long> id){
         List<Book> books = bookService.getbookid(id);
         return  new  GsonBuilder().create().toJson(books);
     }
+    @GetMapping(path = "sum/{id}/{number}")
+    public  List<Integer> getSum(@PathVariable List<Long> id,@PathVariable List<Integer> number){
+        List<Integer> sum=bookService.getSum(id,number);
+      return sum;
+    }
 
-
+    @GetMapping(path = "shopping/{mysum}/{id}/{number}")
+    public String shop(@PathVariable int mysum,@PathVariable List<Long> id,@PathVariable List<Integer> number){
+        bookService.getMoney(mysum,id,number);
+        return "Success";
+    }
 
 }

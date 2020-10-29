@@ -12,6 +12,8 @@ public class User {
     private String name;
     @Column( unique = true, nullable = false)
     private String userName;
+    @Column()
+    private long cache;
     @Column( unique = true, nullable = false)
     private String password;
     @ManyToOne(fetch = FetchType.EAGER)
@@ -20,12 +22,14 @@ public class User {
     public User() {
     }
 
-    public User(long id, String name, String lastName, int code, String userName, String password, Role role) {
+    public User(long id, String name, String userName, String password,long cache, Role role) {
         this.id = id;
         this.name = name;
         this.userName = userName;
         this.password = password;
+        this.cache = cache;
         this.role = role;
+
     }
 
     public Long getId() {
@@ -58,6 +62,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public long getCache() {
+        return cache;
+    }
+
+    public void setCache(long cash) {
+        this.cache = cash;
     }
 
     public Role getRole() {

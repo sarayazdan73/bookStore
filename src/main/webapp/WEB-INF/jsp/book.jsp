@@ -49,6 +49,7 @@
         <th >library</th>
         <th >name writer</th>
         <th><button id="myBtn" class="btn2">Add Book</button></th>
+        <th>number</th>
         <th>shop</th>
 
     </tr>
@@ -148,15 +149,22 @@
                         newCell.appendChild(inputElement);
                         newCell.appendChild(inputElement2);
                         var newCell = newRow.insertCell(7);
+                        let inputElement4 = document.createElement('input');
+                        inputElement4.type = "number"
+                        newCell.appendChild(inputElement4);
+
+                        var newCell = newRow.insertCell(8);
                         var inputElement3 = document.createElement('input');
                         inputElement3.type = "button"
                         inputElement3.value="add to cart"
                         inputElement3.id="btnCart"
-
                         inputElement3.addEventListener('click', function(){
-                            myFunction5(id);
+                            console.log("111",inputElement4) ;
+                            let number=inputElement4.value;
+                            myFunction5(id,number);
                         });
                         newCell.appendChild(inputElement3);
+
                     }
 
                 }
@@ -204,9 +212,9 @@
         xhr.send();
         tablebook.deleteRow(a);
     }
-    function myFunction5(id) {
+    function myFunction5(id,number) {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost:8081/book/addcart/"+id,true);
+        xhr.open("POST", "http://localhost:8081/book/addcart/"+id+"/"+number,true);
         xhr.send();
 
     }

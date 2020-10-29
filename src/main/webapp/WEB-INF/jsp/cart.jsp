@@ -36,12 +36,10 @@
     <tr>
         <th>name</th>
         <th>price</th>
-        <th>count</th>
         <th >image</th>
         <th >library</th>
         <th >name writer</th>
 
-        <th>number</th>
 
     </tr>
     </thead>
@@ -53,24 +51,24 @@
 <script>
 
     var tablebook = document.getElementById("book").getElementsByTagName("tbody")[0];
-    var id=${list}
-    console.log("id",id)
+    var id=${ids}
+    var number=${numbers}
+
 
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 var response = xhttp.response;
                 var books = JSON.parse(response);
-                console.log("sara",books)
+                console.log("sara", books)
                 tablebook.innerHTML = "";
-                  var i;
-                for (i = 0; i <books.length ; i++) {
+                var i;
+                for (i = 0; i < books.length; i++) {
                     let name = books[i].name;
                     let price = books[i].price;
-                    let count = books[i].count;
                     let image = books[i].imageStorage.id;
                     let nameWriter = books[i].nameWriter;
-                    let library=books[i].library.name;
+                    let library = books[i].library.name;
                     var newRow = tablebook.insertRow();
                     var newCell = newRow.insertCell(0);
                     var newText = document.createTextNode(name);
@@ -79,32 +77,62 @@
                     var newText = document.createTextNode(price);
                     newCell.appendChild(newText);
                     var newCell = newRow.insertCell(2);
-                    var newText = document.createTextNode(count);
+                    var newText = document.createElement("IMG");
+                    newText.setAttribute("src", "http://localhost:8081/book/img/" + image);
+                    newText.setAttribute("width", "80");
+                    newText.setAttribute("height", "80");
                     newCell.appendChild(newText);
                     var newCell = newRow.insertCell(3);
-                    var newText = document.createElement("IMG");
-                    newText.setAttribute("src", "http://localhost:8081/book/img/"+image);
-                    newText.setAttribute("width", "80");
-                    newText.setAttribute("height","80");
-                    newCell.appendChild(newText);
-                    var newCell = newRow.insertCell(4);
                     var newText = document.createTextNode(library);
                     newCell.appendChild(newText);
-                    var newCell = newRow.insertCell(5);
+                    var newCell = newRow.insertCell(4);
                     var newText = document.createTextNode(nameWriter);
                     newCell.appendChild(newText);
-                    var newCell = newRow.insertCell(6);
+
+                    }}   };
+            var xhttp1 = new XMLHttpRequest();
+            xhttp1.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response1 = xhttp1.response;
+                    var sum = JSON.parse(response1);
+                    var mysum=0;
+                    for (var i = 0; i < sum.length; i++) {
+                        mysum=sum[i]+mysum;
+                    }
+                    console.log("mysum",mysum);
+                    var newRow = tablebook.insertRow();
+                    var newCell = newRow.insertCell(0);
+                    var newText = document.createTextNode("sum of prices");
+                    newCell.appendChild(newText);
+                    var newCell = newRow.insertCell(1);
+                    var newText = document.createTextNode(mysum);
+                    newCell.appendChild(newText);
+                    var newCell = newRow.insertCell(2);
                     var inputElement3 = document.createElement('input');
-                    inputElement3.type = "number"
+                    inputElement3.type = "button"
+                    inputElement3.value="shopping"
+                    inputElement3.id="btnCart"
+                    inputElement3.addEventListener('click', function(){
+                        myFunction(mysum);
+                    });
                     newCell.appendChild(inputElement3);
 
-                }
 
-            }
-        };
-        xhttp.open("GET", "http://localhost:8081/book/bookid/"+id, true);
-        xhttp.send();
-    console.log("http://localhost:8081/book/bookid/"+id)
+                }};
+                    xhttp1.open("GET", "http://localhost:8081/book/sum/" + id + "/" + number, true);
+                    xhttp1.send();
+
+                    xhttp.open("GET", "http://localhost:8081/book/bookid/" + id, true);
+                    xhttp.send();
+
+    function myFunction(mysum) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:8081/book/shopping/"+mysum+"/"+id+"/"+number,true);
+        xhr.send();
+        alert("the operation was successful");
+
+    }
+
 
 </script>
 </body>
