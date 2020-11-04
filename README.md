@@ -5,15 +5,18 @@ Features
     Site search and browse
     Book list by name
     Site security
-    User can add book
+    The user can add book to database
+    The user can add books to their own shopping cart
+    The user can pay the total cost of the shopping cart and complete the shopping
+    Thr user can pay and shop 
     Admin can add,update and delete user
-    Rest API
+    Rest API 
 
 Technology Stacks
 
 Backend
 
-    Java 11
+    Java 8
     Spring Boot 
     Spring Security
     Spring Data JPA
