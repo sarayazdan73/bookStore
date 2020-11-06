@@ -1,4 +1,4 @@
-It is a web application for shopping for book.
+An online Book Store createed with springBoot,oracle,javascript and Bootstrap
 
 Features
 
